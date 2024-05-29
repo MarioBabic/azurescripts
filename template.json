@@ -28,6 +28,12 @@
         "serverfarms_ASP_syskit_001_name": {
             "defaultValue": "ASP-syskit-001",
             "type": "String"
+        },
+        "administratorLogin": {
+            "type": "String"
+        },
+        "administratorLoginPassword": {
+            "type": "SecureString"
         }
     },
     "variables": {},
@@ -40,6 +46,7 @@
             "kind": "v12.0",
             "properties": {
                 "administratorLogin": "adminimario",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
                 "version": "12.0",
                 "minimalTlsVersion": "1.2",
                 "publicNetworkAccess": "Disabled",
@@ -1249,186 +1256,6 @@
             ],
             "properties": {
                 "state": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-dev/CreateIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-dev')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-prod/CreateIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-prod')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-stag/CreateIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-stag')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-dev/DbParameterization')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-dev')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-prod/DbParameterization')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-prod')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-stag/DbParameterization')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-stag')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-dev/DefragmentIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-dev')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-prod/DefragmentIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-prod')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-stag/DefragmentIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-stag')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-dev/DropIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-dev')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-prod/DropIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-prod')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-stag/DropIndex')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-stag')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Disabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-dev/ForceLastGoodPlan')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-dev')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-prod/ForceLastGoodPlan')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-prod')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases/advisors",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('servers_sql_syskit_name'), '/sqldb-syskit-stag/ForceLastGoodPlan')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', parameters('servers_sql_syskit_name'), 'sqldb-syskit-stag')]",
-                "[resourceId('Microsoft.Sql/servers', parameters('servers_sql_syskit_name'))]"
-            ],
-            "properties": {
-                "autoExecuteValue": "Enabled"
             }
         },
         {
